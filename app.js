@@ -1,5 +1,9 @@
-const add = require('./utils')
+const notes = require('./notes')
+const shownotes = notes()
+console.log(shownotes)
 
-const sum = add(4, 2)
+// const add = require('./utils')
 
-console.log(sum)
+// const sum = add(4, 2)
+
+// console.log(sum)

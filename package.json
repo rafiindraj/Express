@@ -1,0 +1,25 @@
+{
+  "name": "note-app",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/rafiindraj/Express.git"
+  },
+  "keywords": [
+    "express"
+  ],
+  "author": "Rafi Indrajati",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/rafiindraj/Express/issues"
+  },
+  "homepage": "https://github.com/rafiindraj/Express#readme",
+  "dependencies": {
+    "validator": "^13.6.0"
+  }
+}
