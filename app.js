@@ -1,5 +1,5 @@
 const colors = require('chalk')
-const notes = require('./notes')
+const noteUtility = require('./notes')
 const yargs = require('yargs')
 const { argv } = require('yargs')
 
@@ -31,7 +31,8 @@ yargs.command({
         }      
     },
     handler: function(){
-        log('Title: ' + argv.title)
+        // log('Title: ' + argv.title)
+        noteUtility.addNote(argv.title, argv.contents)
     }
 })
 
