@@ -6,6 +6,7 @@
 // module.exports = prefilled;
 // module.exports = notes
 const fs = require('fs')
+const colors = require('chalk')
 
 function getNote() {
     return 'Ur Notes'
@@ -14,13 +15,32 @@ const getNotes = function () {
     return 'Your Notes'
 }
 
-const addNote = function (title, contents) {
+const addNotes = function (title, contents) {
     const notes = loadNotes()
-    notes.push({
-        title: title,
-        contents: contents
+
+    //filter array
+    const duplicateNotes = notes.filter(function (note) {
+        return note.title === title
     })
-    console.log(notes)
+    //
+
+    if (duplicateNotes.length == 0) {
+        notes.push({
+            title: title,
+            contents: contents
+        })
+
+        saveNote(notes)
+        console.log('new note added')
+    } else {
+        console.log(colors.red.inverse('note title has been taken'))
+    }
+
+}
+
+const saveNote = function (notes) {
+    const dataJSON = JSON.stringify(notes)
+    fs.writeFileSync('notes.json', dataJSON)
 }
 
 const loadNotes = function () {
@@ -32,11 +52,14 @@ const loadNotes = function () {
         return []
     }
 
+}
 
+const removeNote = function(title){
+    
 }
 
 module.exports = {
     getNotes: getNotes,
     getNote: getNote,
-    addNote: addNote
+    addNotes: addNotes
 }
