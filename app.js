@@ -32,7 +32,7 @@ yargs.command({
     },
     handler: function(){
         // log('Title: ' + argv.title)
-        noteUtility.addNote(argv.title, argv.contents)
+        noteUtility.addNotes(argv.title, argv.contents)
     }
 })
 
