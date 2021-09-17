@@ -14,9 +14,9 @@ const events = {
     printGuessList(){
         // const that = this
         console.log(this.name+' is VIP guessList')
-        this.guessList.forEach((guest)=>{
-            console.log(guest+ ' is coming soon to save the world where '+ this.name+ ' lived in')
-        })
+        this.guessList.forEach((guest)=> console.log(guest+ ' is coming soon to save the world where '+ this.name+ ' lived in')
+         
+        )
     }
 }
 

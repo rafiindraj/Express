@@ -7,21 +7,21 @@
 // module.exports = notes
 const fs = require('fs')
 const colors = require('chalk')
+const yargs = require('yargs')
+// yargs.version('1.1.0')
 
 function getNote() {
     return 'Ur Notes'
 }
-const getNotes = function () {
+const getNotes = ()=> {
     return 'Your Notes'
 }
 
-const addNotes = function (title, contents) {
+const addNotes = (title, contents)=> {
     const notes = loadNotes()
 
     //filter array
-    const duplicateNotes = notes.filter(function (note) {
-        return note.title === title
-    })
+    const duplicateNotes = notes.filter((note)=>note.title === title)
     //
 
     if (duplicateNotes.length == 0) {
@@ -38,12 +38,12 @@ const addNotes = function (title, contents) {
 
 }
 
-const saveNote = function (notes) {
+const saveNote =(notes)=> {
     const dataJSON = JSON.stringify(notes)
     fs.writeFileSync('notes.json', dataJSON)
 }
 
-const loadNotes = function () {
+const loadNotes = ()=> {
     try {
         const dataBuffer = fs.readFileSync('notes.json')
         const dataJSON = dataBuffer.toString()
@@ -54,27 +54,16 @@ const loadNotes = function () {
 
 }
 
-const removeNotes = function(title){
+const removeNotes = (title)=>{
     console.log(title)
     const notes = loadNotes()
-    const notesToKeep = notes.filter(function (note) {
-        return note.title !== title
-    })
+    const notesToKeep = notes.filter((note) =>note.title !== title)
     if(notes.length > notesToKeep.length){
         saveNote(notesToKeep)
         console.log(colors.green.inverse('item deleted'))
     }else{
         console.log(colors.red.inverse('item is not exist'))
     }
-
-    // if(notesToKeep != 0){
-    //     notes.splice({
-    //         title: title
-    //     })
-       
-    // }else{
-    //     console.log(colors.red.inverse('item is not exist'))
-    // }
 }
 
 module.exports = {
