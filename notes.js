@@ -21,10 +21,11 @@ const addNotes = (title, contents)=> {
     const notes = loadNotes()
 
     //filter array
-    const duplicateNotes = notes.filter((note)=>note.title === title)
+    // const duplicateNotes = notes.filter((note)=>note.title === title)
+    const duplicateNote = notes.find((note)=>note.title === title)
     //
 
-    if (duplicateNotes.length == 0) {
+    if (!duplicateNote) {
         notes.push({
             title: title,
             contents: contents
@@ -36,6 +37,18 @@ const addNotes = (title, contents)=> {
         console.log(colors.red.inverse('note title has been taken'))
     }
 
+}
+
+const readNotes=(title)=>{
+    const notes = loadNotes()
+    const noteMatch = notes.find((note)=>note.title === title)
+
+    if(noteMatch){
+        console.log(colors.inverse(noteMatch.title))
+        console.log(noteMatch.)
+    }else{
+        console.log(colors.red.inverse('note not found'))
+    }
 }
 
 const saveNote =(notes)=> {
@@ -66,9 +79,17 @@ const removeNotes = (title)=>{
     }
 }
 
+const listNotes =()=>{
+    const notes = loadNotes()
+    console.log(colors.inverse('Your Notes'))
+    notes.forEach((note)=>console.log(note.title))
+}
+
 module.exports = {
     getNotes: getNotes,
     getNote: getNote,
     addNotes: addNotes,
-    removeNotes: removeNotes
+    removeNotes: removeNotes,
+    listNotes: listNotes,
+    readNotes: readNotes
 }

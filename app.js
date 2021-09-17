@@ -2,6 +2,7 @@ const colors = require('chalk')
 const noteUtility = require('./notes')
 const yargs = require('yargs')
 const { argv } = require('yargs')
+const notes = require('./notes')
 
 //variable declaration
 const log = console.log
@@ -56,8 +57,16 @@ yargs.command({
 yargs.command({
     command: 'read',
     describe : 'read a note',
+    builder:{
+        title :{
+            describe: 'Note Title',
+            demandOption: true,
+            type: 'string'
+        }
+    },
     handler(){
-        log('Reading a note..')
+        // log('Reading a note..')
+        noteUtility.readNotes(argv.title)
     }
 })
 
@@ -66,7 +75,7 @@ yargs.command({
     command: 'list',
     describe : 'List a note',
     handler(){
-        log('Listing a note..')
+        noteUtility.listNotes()
     }
 })
 
