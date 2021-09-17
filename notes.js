@@ -31,7 +31,7 @@ const addNotes = function (title, contents) {
         })
 
         saveNote(notes)
-        console.log('new note added')
+        console.log(colors.green.inverse('new note added'))
     } else {
         console.log(colors.red.inverse('note title has been taken'))
     }
@@ -54,12 +54,32 @@ const loadNotes = function () {
 
 }
 
-const removeNote = function(title){
-    
+const removeNotes = function(title){
+    console.log(title)
+    const notes = loadNotes()
+    const notesToKeep = notes.filter(function (note) {
+        return note.title !== title
+    })
+    if(notes.length > notesToKeep.length){
+        saveNote(notesToKeep)
+        console.log(colors.green.inverse('item deleted'))
+    }else{
+        console.log(colors.red.inverse('item is not exist'))
+    }
+
+    // if(notesToKeep != 0){
+    //     notes.splice({
+    //         title: title
+    //     })
+       
+    // }else{
+    //     console.log(colors.red.inverse('item is not exist'))
+    // }
 }
 
 module.exports = {
     getNotes: getNotes,
     getNote: getNote,
-    addNotes: addNotes
+    addNotes: addNotes,
+    removeNotes: removeNotes
 }

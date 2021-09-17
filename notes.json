@@ -1,14 +1,1 @@
-[
-    {
-        "title": "t",
-        "contents": "abc"
-    },
-    {
-        "title": "My title",
-        "contents": "Maxime and Saix are anagrams"
-    },
-    {
-        "title": "bc",
-        "contents": "b"
-    }
-]
+[{"title":"My title","contents":"Maxime and Saix are anagrams"}]
