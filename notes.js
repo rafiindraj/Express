@@ -45,7 +45,7 @@ const readNotes=(title)=>{
 
     if(noteMatch){
         console.log(colors.inverse(noteMatch.title))
-        console.log(noteMatch.)
+        console.log(noteMatch)
     }else{
         console.log(colors.red.inverse('note not found'))
     }
